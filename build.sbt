@@ -5,7 +5,6 @@ ThisBuild / majorVersion := 0
 ThisBuild / scalaVersion := "3.3.7"
 ThisBuild / scalacOptions += "-Wconf:msg=Flag.*repeatedly:s"
 ThisBuild / semanticdbEnabled := true
-ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 
 lazy val microservice = Project("sdec-customer-frontend", file("."))
   .enablePlugins(play.sbt.PlayScala, SbtDistributablesPlugin)
