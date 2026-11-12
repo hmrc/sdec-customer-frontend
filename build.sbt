@@ -11,7 +11,7 @@ lazy val microservice = Project("sdec-customer-frontend", file("."))
   .disablePlugins(JUnitXmlReportPlugin) // Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
     RoutesKeys.routesImport ++= Seq(
-      "models._",
+      "uk.gov.hmrc.sdeccustomerfrontend.models.*",
       "uk.gov.hmrc.play.bootstrap.binders.RedirectUrl"
     ),
     TwirlKeys.templateImports ++= Seq(
@@ -21,7 +21,10 @@ lazy val microservice = Project("sdec-customer-frontend", file("."))
       "uk.gov.hmrc.hmrcfrontend.views.html.components._",
       "uk.gov.hmrc.hmrcfrontend.views.html.helpers._",
       "uk.gov.hmrc.hmrcfrontend.views.config._",
-      "controllers.routes._"
+      "uk.gov.hmrc.sdeccustomerfrontend.controllers.routes",
+      "uk.gov.hmrc.sdeccustomerfrontend.views.ViewUtils._",
+      "uk.gov.hmrc.sdeccustomerfrontend.models.Mode",
+      "uk.gov.hmrc.sdeccustomerfrontend.viewmodels.govuk.all._"
     ),
     PlayKeys.playDefaultPort := 5501,
     libraryDependencies ++= AppDependencies.compile ++ AppDependencies.test,

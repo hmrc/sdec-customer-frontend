@@ -1,0 +1,36 @@
+/*
+ * Copyright 2026 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package uk.gov.hmrc.sdeccustomerfrontend.fixtures
+
+import uk.gov.hmrc.auth.core.retrieve.Name
+import uk.gov.hmrc.auth.core.{AffinityGroup, ConfidenceLevel, Enrolments}
+import uk.gov.hmrc.sdeccustomerfrontend.models.{CustomerIdentifier, ExternalUser, IdentityProvider}
+
+object ExternalUserFixtures {
+
+  val externalUser: ExternalUser =
+    ExternalUser(
+      id = CustomerIdentifier(IdentityProvider.GovernmentGateway, "cred-id-123"),
+      name = Some(Name(Some("Jane"), Some("Doe"))),
+      email = Some("jane.doe@example.com"),
+      nino = Some("AA123456A"),
+      enrolments = Enrolments(Set.empty),
+      affinityGroup = Some(AffinityGroup.Individual),
+      confidenceLevel = ConfidenceLevel.L250
+    )
+
+}

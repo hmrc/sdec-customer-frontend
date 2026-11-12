@@ -1,2 +1,27 @@
-label.sdec_stride_frontend = sdec-customer-frontend
-label.this_is_your_new_service = This is your new service
+service.name = Share Files Securely with HMRC
+
+# Global
+site.continue = Continue
+site.sorry_there_is_a_problem_with_the_service = Sorry, there is a problem with the service. Try again later.
+site.govuk = GOV.UK
+site.error = Error
+
+# Title case
+title.share_files_securely_with_hmrc = Share Files Securely with HMRC
+
+# Sentence case
+label.you_cant_access_this_service_with_this_account = You can’t access this service with this account
+label.this_service_can_only_be_accessed_after_ = This service can only be accessed after you have logged in using Government Gateway or GOV.UK One Login
+label.enter_the_thread_reference_number = Enter the thread reference number
+label.this_can_be_found_in_the_email_you_received_ = This can be found in the email you received from HMRC, for example HDJ2123F9K7M
+label.the_thread_reference_contains_14_characters_using_ = The thread reference contains 14 characters using A - Z and 0 - 9 only
+label.there_is_a_problem_with_the_thread_reference_number_ = There is a problem with the thread reference number you entered
+label.there_is_a_problem = There is a problem
+label.development_in_progress = Development in progress
+label.this_part_of_the_service_has_not_been_built_yet  = This part of the service has not been built yet.
+label.this_can_be_found_on_the_email_you_received_ = This can be found on the email you received from HMRC, inviting you to use the service.
+label.the_number_is_14_digits_long_and_contains_ = The number is 14 digits long and contains letters and numbers, for example KL8978654322.
+label.if_you_cannot_locate_your_thread_reference_number_ = If you cannot locate your thread reference number, contact the person who invited you to use the service for help.
+label.enter_a_valid_reference_number = Enter a valid reference number
+label.still_having_issues = Still having issues?
+label.if_you_cannot_find_your_thread_reference_number_ = If you cannot find your thread reference number, contact the person who invited you to the service for help.

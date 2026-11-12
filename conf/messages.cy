@@ -1,2 +1,1 @@
-label.sdec_stride_frontend = sdec-customer-frontend
-label.this_is_your_new_service = Dyma'ch gwasanaeth newydd
+service.name = sdec-customer-frontend
