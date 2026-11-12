@@ -14,20 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.sdeccustomerfrontend.controllers
+package uk.gov.hmrc.sdeccustomerfrontend.models
 
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import uk.gov.hmrc.sdeccustomerfrontend.views.html.HelloWorldPage
+import uk.gov.hmrc.auth.core.retrieve.Name
+import uk.gov.hmrc.auth.core.{AffinityGroup, ConfidenceLevel, Enrolments}
 
-import javax.inject.{Inject, Singleton}
-
-@Singleton
-class HelloWorldController @Inject() (
-  mcc:            MessagesControllerComponents,
-  helloWorldPage: HelloWorldPage
-) extends FrontendController(mcc):
-
-  val helloWorld: Action[AnyContent] =
-    Action:
-      implicit request => Ok(helloWorldPage())
+final case class ExternalUser(
+  id:              CustomerIdentifier,
+  name:            Option[Name],
+  email:           Option[String],
+  nino:            Option[String],
+  enrolments:      Enrolments,
+  affinityGroup:   Option[AffinityGroup],
+  confidenceLevel: ConfidenceLevel
+)

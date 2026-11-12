@@ -1,4 +1,4 @@
-/*
+@*
  * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *@
 
-package uk.gov.hmrc.sdeccustomerfrontend.config
+@this(
+  layout: templates.Layout
+)
 
-import play.api.Configuration
+@()(implicit request: Request[_], messages: Messages)
 
-import javax.inject.{Inject, Singleton}
-
-@Singleton
-class AppConfig @Inject() (config: Configuration):
-
-  val welshLanguageSupportEnabled: Boolean =
-    config.getOptional[Boolean]("features.welsh-language-support").getOrElse(false)
-
-  val cacheTtl: Long = config.get[Int]("mongodb.timeToLiveInSeconds")
+@layout(
+  pageTitle = titleNoForm(messages("label.you_cant_access_this_service_with_this_account")),
+  timeout   = false
+) {
+  <h1 class="govuk-heading-xl">@messages("label.you_cant_access_this_service_with_this_account")</h1>
+  <p class="govuk-body">@messages("label.this_service_can_only_be_accessed_after_")</p>
+}
