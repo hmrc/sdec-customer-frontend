@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.sdeccustomerfrontend.models
 
-import play.api.libs.json.*
 import play.api.libs.functional.syntax.*
+import play.api.libs.json.*
 import uk.gov.hmrc.mongo.play.json.formats.MongoJavatimeFormats
 import uk.gov.hmrc.sdeccustomerfrontend.queries.{Gettable, Settable}
 
@@ -66,23 +66,19 @@ final case class UserAnswers(
 
 object UserAnswers {
 
-  val reads: Reads[UserAnswers] = {
-
+  val reads: Reads[UserAnswers] =
     (
       (__ \ "_id").read[String] and
         (__ \ "data").read[JsObject] and
         (__ \ "lastUpdated").read(MongoJavatimeFormats.instantFormat)
     )(UserAnswers.apply _)
-  }
 
-  val writes: OWrites[UserAnswers] = {
-  
+  val writes: OWrites[UserAnswers] =
     (
       (__ \ "_id").write[String] and
         (__ \ "data").write[JsObject] and
         (__ \ "lastUpdated").write(MongoJavatimeFormats.instantFormat)
     )(ua => (ua.id, ua.data, ua.lastUpdated))
-  }
 
   given format: OFormat[UserAnswers] = OFormat(reads, writes)
 }
