@@ -25,3 +25,5 @@ class AppConfig @Inject() (config: Configuration):
 
   val welshLanguageSupportEnabled: Boolean =
     config.getOptional[Boolean]("features.welsh-language-support").getOrElse(false)
+
+  val cacheTtl: Long = config.get[Int]("mongodb.timeToLiveInSeconds")
