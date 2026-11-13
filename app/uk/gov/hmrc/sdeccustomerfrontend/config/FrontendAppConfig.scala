@@ -27,11 +27,13 @@ class FrontendAppConfig @Inject() (config: Configuration, servicesConfig: Servic
   val welshLanguageSupportEnabled: Boolean =
     config.getOptional[Boolean]("features.welsh-language-support").getOrElse(false)
 
-  val loginUrl:         String = config.get[String]("urls.login")
-  val loginContinueUrl: String = config.get[String]("urls.loginContinue")
-  val signOutUrl:       String = config.get[String]("urls.signOut")
+  val cacheTtl: Long = config.get[Int]("mongodb.timeToLiveInSeconds")
 
-  private val sdecCustomerApiHost: String = servicesConfig.baseUrl(serviceName = "sdec-customer-api")
-  val sdecCustomerApiUrl:          String = sdecCustomerApiHost + "/sdec-customer-api"
+  lazy val loginUrl:         String = config.get[String]("urls.login")
+  lazy val loginContinueUrl: String = config.get[String]("urls.loginContinue")
+  lazy val signOutUrl:       String = config.get[String]("urls.signOut")
+
+  private lazy val sdecCustomerApiHost: String = servicesConfig.baseUrl(serviceName = "sdec-customer-api")
+  lazy val sdecCustomerApiUrl:          String = sdecCustomerApiHost + "/sdec-customer-api"
 
 }
