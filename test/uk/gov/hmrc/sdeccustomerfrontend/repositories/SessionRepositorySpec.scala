@@ -21,7 +21,8 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import play.api.Configuration
 import uk.gov.hmrc.mongo.test.DefaultPlayMongoRepositorySupport
-import uk.gov.hmrc.sdeccustomerfrontend.config.AppConfig
+import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
+import uk.gov.hmrc.sdeccustomerfrontend.config.FrontendAppConfig
 import uk.gov.hmrc.sdeccustomerfrontend.models.UserAnswers
 
 import java.time.{Clock, Instant, ZoneOffset}
@@ -37,8 +38,10 @@ class SessionRepositorySpec
 
   override protected val databaseName: String = "test-sdec-customer-frontend-SessionRepositorySpec"
 
+  private val configuration = Configuration("mongodb.timeToLiveInSeconds" -> 900)
+
   override protected val repository: SessionRepository =
-    SessionRepository(mongoComponent, AppConfig(Configuration("mongodb.timeToLiveInSeconds" -> 900)), clock)
+    SessionRepository(mongoComponent, FrontendAppConfig(configuration, ServicesConfig(configuration)), clock)
 
   "SessionRepository" should {
     "save and read back answers" in {
