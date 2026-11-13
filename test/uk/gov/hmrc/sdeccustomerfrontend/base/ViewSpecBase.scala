@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.sdeccustomerfrontend
+package uk.gov.hmrc.sdeccustomerfrontend.base
+import org.scalatestplus.play.PlaySpec
+import org.scalatestplus.play.guice.GuiceOneAppPerSuite
+import play.api.i18n.{Messages, MessagesApi}
+import play.api.mvc.{AnyContent, Request}
+import play.api.test.CSRFTokenHelper.CSRFRequest
+import play.api.test.{FakeRequest, Injecting}
 
-import play.api.inject.{Binding, Module as AppModule}
-import play.api.{Configuration, Environment}
+trait ViewSpecBase extends PlaySpec with GuiceOneAppPerSuite with Injecting {
 
-import java.time.Clock
+  val request:    Request[AnyContent] = FakeRequest().withCSRFToken
+  given messages: Messages            = inject[MessagesApi].preferred(request)
 
-class Module extends AppModule:
-
-  override def bindings(
-    environment:   Environment,
-    configuration: Configuration
-  ): Seq[Binding[_]] =
-    bind[Clock].toInstance(Clock.systemDefaultZone) :: // inject if current time needs to be controlled in unit tests
-      Nil
+}

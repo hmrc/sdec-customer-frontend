@@ -23,7 +23,7 @@ import uk.gov.hmrc.mdc.Mdc
 import uk.gov.hmrc.mongo.MongoComponent
 import uk.gov.hmrc.mongo.play.json.PlayMongoRepository
 import uk.gov.hmrc.mongo.play.json.formats.MongoJavatimeFormats
-import uk.gov.hmrc.sdeccustomerfrontend.config.AppConfig
+import uk.gov.hmrc.sdeccustomerfrontend.config.FrontendAppConfig
 import uk.gov.hmrc.sdeccustomerfrontend.models.UserAnswers
 
 import java.time.{Clock, Instant}
@@ -34,7 +34,7 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class SessionRepository @Inject() (
   mongoComponent: MongoComponent,
-  appConfig:      AppConfig,
+  appConfig:      FrontendAppConfig,
   clock:          Clock
 )(using ExecutionContext)
     extends PlayMongoRepository[UserAnswers](
