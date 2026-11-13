@@ -31,7 +31,7 @@ object ViewUtils {
     s"${messages(title)} - ${section.fold("")(messages(_) + " - ")}${messages("service.name")} - ${messages("site.govuk")}"
 
   def errorPrefix(form: Form[?])(using messages: Messages): String =
-    if form.hasErrors || form.hasGlobalErrors then messages("error.title.prefix")
+    if form.hasErrors || form.hasGlobalErrors then messages("site.error_")
     else ""
 
 }
