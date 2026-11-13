@@ -5,6 +5,7 @@ site.continue = Continue
 site.sorry_there_is_a_problem_with_the_service = Sorry, there is a problem with the service. Try again later.
 site.govuk = GOV.UK
 site.error = Error
+site.error_ = Error:
 
 # Title case
 title.share_files_securely_with_hmrc = Share Files Securely with HMRC
