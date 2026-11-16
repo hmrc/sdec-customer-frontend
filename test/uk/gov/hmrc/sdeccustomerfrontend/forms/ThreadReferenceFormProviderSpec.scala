@@ -32,7 +32,7 @@ class ThreadReferenceFormProviderSpec extends AnyWordSpec with Matchers with Gui
   private val validThreadReference = "KL897865432211"
 
   private val requiredErrorMessage = "Enter the thread reference number"
-  private val invalidErrorMessage  = "The thread reference contains 14 characters using A - Z and 0 - 9 only"
+  private val invalidErrorMessage  = "Enter a valid thread reference number"
 
   private lazy val messages: Messages = inject[MessagesApi].preferred(Seq(Lang.defaultLang))
 

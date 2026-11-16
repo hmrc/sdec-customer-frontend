@@ -34,7 +34,7 @@ class ThreadReferenceFormProvider @Inject() extends ThreadReferenceMapping {
             firstError(
               regexp(
                 Validation.ThreadReferencePattern,
-                "label.the_thread_reference_contains_14_characters_using_"
+                "label.enter_a_valid_thread_reference_number"
               )
             )
           )
