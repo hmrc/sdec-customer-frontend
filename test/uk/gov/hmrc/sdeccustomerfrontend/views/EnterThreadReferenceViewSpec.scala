@@ -59,7 +59,7 @@ class EnterThreadReferenceViewSpec extends ViewSpecBase with Matchers with Guice
         .text() mustBe "This can be found on the email you received from HMRC, inviting you to use the service."
       paragraphs
         .get(1)
-        .text() mustBe "The number is 14 digits long and contains letters and numbers, for example KL8978654322."
+        .text() mustBe "The number is 14 digits long and contains letters and numbers, for example KL897865432211."
       paragraphs
         .get(2)
         .text() mustBe "If you cannot locate your thread reference number, contact the person who invited you to use the service for help."
