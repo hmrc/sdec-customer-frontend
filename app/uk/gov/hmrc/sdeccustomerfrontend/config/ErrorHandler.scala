@@ -37,7 +37,7 @@ class ErrorHandler @Inject() (
     pageTitle: String,
     heading:   String,
     message:   String
-  )(implicit request: RequestHeader): Future[Html] =
+  )(using request: RequestHeader): Future[Html] =
     Future.successful(errorTemplate(pageTitle, heading, message))
 
 }

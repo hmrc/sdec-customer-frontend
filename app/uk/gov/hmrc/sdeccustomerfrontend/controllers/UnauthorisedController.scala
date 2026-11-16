@@ -17,7 +17,7 @@
 package uk.gov.hmrc.sdeccustomerfrontend.controllers
 
 import play.api.i18n.I18nSupport
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.UnauthorisedView
 
@@ -29,7 +29,9 @@ class UnauthorisedController @Inject() (
 ) extends FrontendBaseController
     with I18nSupport {
 
-  def onPageLoad(): Action[AnyContent] = Action { implicit request =>
+  def onPageLoad(): Action[AnyContent] = Action { request =>
+    given Request[AnyContent] = request
+
     Ok(view())
   }
 }

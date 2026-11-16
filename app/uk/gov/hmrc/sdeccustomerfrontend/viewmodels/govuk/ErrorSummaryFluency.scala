@@ -30,7 +30,7 @@ trait ErrorSummaryFluency {
     def apply(
       form:               Form[?],
       errorLinkOverrides: Map[String, String] = Map.empty
-    )(implicit messages: Messages): ErrorSummary = {
+    )(using messages: Messages): ErrorSummary = {
 
       val errors = form.errors.map { error =>
         ErrorLink(

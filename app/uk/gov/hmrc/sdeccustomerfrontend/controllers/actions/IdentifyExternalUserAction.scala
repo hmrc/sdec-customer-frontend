@@ -52,7 +52,7 @@ class IdentifyExternalUserAction @Inject() (
     block:   ExternalUserRequest[A] => Future[Result]
   ): Future[Result] = {
 
-    implicit val hc: HeaderCarrier =
+    given hc: HeaderCarrier =
       HeaderCarrierConverter.fromRequestAndSession(request, request.session)
 
     authorised()

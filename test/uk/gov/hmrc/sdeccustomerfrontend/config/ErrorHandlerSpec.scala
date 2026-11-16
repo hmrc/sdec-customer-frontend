@@ -35,7 +35,7 @@ class ErrorHandlerSpec extends AnyWordSpec with Matchers with GuiceOneAppPerSuit
 
   "standardErrorTemplate" should {
     "render HTML" in {
-      val html = handler.standardErrorTemplate("title", "heading", "message")(fakeRequest).futureValue
+      val html = handler.standardErrorTemplate("title", "heading", "message")(using fakeRequest).futureValue
       html.contentType shouldBe "text/html"
     }
   }
