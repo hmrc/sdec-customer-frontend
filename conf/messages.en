@@ -16,7 +16,6 @@ label.this_service_can_only_be_accessed_after_ = This service can only be access
 label.enter_the_thread_reference_number = Enter the thread reference number
 label.this_can_be_found_in_the_email_you_received_ = This can be found in the email you received from HMRC, for example KL897865432211
 label.enter_a_valid_thread_reference_number = Enter a valid thread reference number
-label.the_thread_reference_contains_14_characters_using_ = The thread reference contains 14 characters using A-Z and 0-9 only
 label.there_is_a_problem_with_the_thread_reference_number_ = There is a problem with the thread reference number you entered
 label.there_is_a_problem = There is a problem
 label.development_in_progress = Development in progress
