@@ -31,11 +31,13 @@ class ErrorHandler @Inject() (
   val messagesApi: MessagesApi
 )(using
   val ec: ExecutionContext
-) extends FrontendErrorHandler:
+) extends FrontendErrorHandler {
 
   override def standardErrorTemplate(
     pageTitle: String,
     heading:   String,
     message:   String
-  )(implicit request: RequestHeader): Future[Html] =
+  )(using request: RequestHeader): Future[Html] =
     Future.successful(errorTemplate(pageTitle, heading, message))
+
+}

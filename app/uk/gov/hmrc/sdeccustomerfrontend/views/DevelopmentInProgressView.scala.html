@@ -14,15 +14,19 @@
  * limitations under the License.
  *@
 
-@this(layout: Layout)
+@import uk.gov.hmrc.govukfrontend.views.html.components.*
 
-@()(implicit request: RequestHeader, messages: Messages)
+@this(
+  layout: templates.Layout,
+  govukPanel: GovukPanel
+)
 
-@layout(pageTitle = Some("sdec-customer-frontend")) {
-    <h1 class="govuk-heading-xl">sdec-customer-frontend</h1>
-    <p class="govuk-body">@{messages("label.this_is_your_new_service")}</p>
-}
+@()(implicit request: Request[_], messages: Messages)
 
-@{
-    //$COVERAGE-OFF$
+@layout(
+  pageTitle = titleNoForm(messages("label.development_in_progress"))
+) {
+  @govukPanel(Panel(
+    title = Text(messages("label.development_in_progress"))
+  ))
 }
