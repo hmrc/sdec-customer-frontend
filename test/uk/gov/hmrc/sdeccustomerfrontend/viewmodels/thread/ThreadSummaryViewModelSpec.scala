@@ -94,7 +94,7 @@ class ThreadSummaryViewModelSpec extends ViewSpecBase {
 
   "formatDateTime" must {
     "format as 'd MMMM yyyy at h:mm am/pm'" in {
-      ThreadSummaryViewModel.formatDateTime(sentAt).toLowerCase mustBe "14 june 2026 at 10:15am"
+      ThreadSummaryViewModel.formatDateTime(sentAt) mustBe "14 June 2026 at 10:15am"
     }
   }
 

@@ -36,15 +36,15 @@ class DateTimeFormatsSpec extends AnyWordSpec with Matchers {
 
   "toDateAndTimeFormat" must {
     "format as 'd MMMM yyyy at h:mm am/pm'" in {
-      LocalDateTime.of(2011, 12, 3, 12, 22).toDateAndTimeFormat.toLowerCase mustBe "3 december 2011 at 12:22pm"
+      LocalDateTime.of(2011, 12, 3, 12, 22).toDateAndTimeFormat mustBe "3 December 2011 at 12:22pm"
     }
 
     "not zero-pad the hour" in {
-      LocalDateTime.of(2026, 6, 5, 9, 30).toDateAndTimeFormat.toLowerCase mustBe "5 june 2026 at 9:30am"
+      LocalDateTime.of(2026, 6, 5, 9, 30).toDateAndTimeFormat mustBe "5 June 2026 at 9:30am"
     }
 
     "show just after midnight as 12am" in {
-      LocalDateTime.of(2026, 6, 14, 0, 5).toDateAndTimeFormat.toLowerCase mustBe "14 june 2026 at 12:05am"
+      LocalDateTime.of(2026, 6, 14, 0, 5).toDateAndTimeFormat mustBe "14 June 2026 at 12:05am"
     }
   }
 }
