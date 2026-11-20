@@ -67,7 +67,7 @@ class EnterThreadReferenceController @Inject() (
             )
             .map {
               case ThreadAccessResult.Found =>
-                Redirect(routes.DevelopmentInProgressController.onPageLoad())
+                Redirect(routes.ThreadViewController.onPageLoad(threadReferenceForm.threadReference))
               case ThreadAccessResult.NotFound | ThreadAccessResult.Denied =>
                 BadRequest(
                   enterThreadReferenceView(
