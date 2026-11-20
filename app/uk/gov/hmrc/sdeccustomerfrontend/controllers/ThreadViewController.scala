@@ -20,56 +20,27 @@ import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
 import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
-import uk.gov.hmrc.sdeccustomerfrontend.models.thread.*
+import uk.gov.hmrc.sdeccustomerfrontend.services.ThreadServiceAlgebra
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.ThreadView
 
-import java.time.{LocalDate, LocalDateTime}
 import javax.inject.Inject
+import scala.concurrent.ExecutionContext
 
 class ThreadViewController @Inject() (
   val controllerComponents: MessagesControllerComponents,
   identifyExternalUser:     IdentifyExternalUser,
+  threadService:            ThreadServiceAlgebra,
   threadView:               ThreadView
-) extends FrontendBaseController
+)(using ec: ExecutionContext)
+    extends FrontendBaseController
     with I18nSupport {
 
-  def onPageLoad(threadId: String): Action[AnyContent] = identifyExternalUser { request =>
-    given Request[AnyContent] = request
-    Ok(threadView(dummyThread(threadId)))
-  }
+  def onPageLoad(threadId: String): Action[AnyContent] =
+    identifyExternalUser.async { request =>
+      given Request[AnyContent] = request
 
-  private def dummyThread(threadId: String): Thread = {
-    val sent = LocalDateTime.now().minusDays(5)
-
-    Thread(
-      id = threadId,
-      status = ThreadStatus.Active,
-      createdTimeStamp = sent,
-      lastUpdatedTimeStamp = sent,
-      threadExpiryDate = LocalDate.now().plusDays(28),
-      associatedCaseReference = "CASE-001",
-      recipientDetails = RecipientDetails(
-        firstName = "John",
-        lastName = "Doe",
-        email = "johndoe@example.com",
-        phoneNumber = "07123456789",
-        nationalInsuranceNumber = "AA000000A",
-        hasRelatedCase = false,
-        caseReferenceNumber = None
-      ),
-      threadDetails = ThreadDetails(
-        message = Seq(
-          "Please provide your payslip for June 2026 and a proof of address.",
-          "Proof of address can include a range of documents including a recent bank or building society " +
-            "statement, utility bill, Council Tax bill, mortgage statement, P45 or P60, benefit entitlement " +
-            "letter, pension or financial statement, bank account opening letter, or a driving licence " +
-            "showing their current address.",
-          "Any document provided should clearly show your full name and current address."
-        ).mkString("\n"),
-        responseDate = LocalDate.now().plusDays(14),
-        requestedFiles = Seq("Payslip for June 2026", "Proof of address"),
-        attachments = Seq(Attachment("Proof of Address Guidance Sheet.docx"))
-      )
-    )
-  }
+      threadService
+        .getThread(threadId)
+        .map(thread => Ok(threadView(thread)))
+    }
 }

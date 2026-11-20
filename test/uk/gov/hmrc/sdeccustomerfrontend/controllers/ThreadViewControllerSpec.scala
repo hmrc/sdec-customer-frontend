@@ -19,17 +19,26 @@ package uk.gov.hmrc.sdeccustomerfrontend.controllers
 import org.jsoup.Jsoup
 import play.api.test.FakeRequest
 import play.api.test.Helpers.*
+import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.sdeccustomerfrontend.base.ControllerSpecBase
-import uk.gov.hmrc.sdeccustomerfrontend.fixtures.ThreadFixtures.threadId
+import uk.gov.hmrc.sdeccustomerfrontend.fixtures.ThreadFixtures.{threadId, threadWith}
+import uk.gov.hmrc.sdeccustomerfrontend.models.thread.Thread
+import uk.gov.hmrc.sdeccustomerfrontend.services.ThreadServiceAlgebra
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.ThreadView
+
+import scala.concurrent.{ExecutionContext, Future}
 
 class ThreadViewControllerSpec extends ControllerSpecBase {
 
   private lazy val controller = new ThreadViewController(
     messagesControllerComponents,
     fakeIdentifyExternalUser,
+    new ThreadServiceAlgebra {
+      override def getThread(threadId: String)(using HeaderCarrier): Future[Thread] =
+        Future.successful(threadWith().copy(id = threadId))
+    },
     inject[ThreadView]
-  )
+  )(using inject[ExecutionContext])
 
   private def getRequest = FakeRequest(GET, routes.ThreadViewController.onPageLoad(threadId).url)
 
@@ -56,7 +65,7 @@ class ThreadViewControllerSpec extends ControllerSpecBase {
       val document = Jsoup.parse(contentAsString(controller.onPageLoad(threadId)(getRequest)))
 
       document.select(".sdec-requested-files li").size() mustBe 2
-      document.select(".hmrc-timeline__event-content > p").size() mustBe 3
+      document.select(".hmrc-timeline__event-content > p").size() mustBe 2
       document.select(".hmrc-timeline__event-content a.govuk-link").text() mustBe
         "Proof of Address Guidance Sheet.docx"
     }
