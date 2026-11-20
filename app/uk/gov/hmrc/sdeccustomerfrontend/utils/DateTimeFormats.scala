@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.sdeccustomerfrontend.utils
 
-import java.time.{LocalDate, LocalDateTime}
 import java.time.format.DateTimeFormatter
+import java.time.{LocalDate, LocalDateTime}
 import java.util.Locale
 
 object DateTimeFormats {

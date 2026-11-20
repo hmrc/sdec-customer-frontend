@@ -17,8 +17,8 @@
 package uk.gov.hmrc.sdeccustomerfrontend.viewmodels.thread
 
 import play.api.i18n.Messages
-import uk.gov.hmrc.sdeccustomerfrontend.models.thread.{Thread, ThreadStatus}
 import play.twirl.api.Html
+import uk.gov.hmrc.sdeccustomerfrontend.models.thread.{Thread, ThreadStatus}
 import uk.gov.hmrc.sdeccustomerfrontend.utils.DateTimeFormats.{toDateAndTimeFormat, toDateFormat}
 
 import java.time.LocalDateTime
