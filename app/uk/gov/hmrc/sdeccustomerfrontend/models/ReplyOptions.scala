@@ -59,7 +59,7 @@ object ReplyOptions {
       case JsString(s) =>
         parseReplyOption(s)
           .map(JsSuccess(_))
-          .getOrElse(JsError(s"Invalid value: $s"))
+          .getOrElse(JsError("Invalid value"))
       case _ => JsError("Expected JSON String")
     },
     Writes(o => JsString(o.toString))
