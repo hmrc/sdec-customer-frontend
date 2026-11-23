@@ -7,6 +7,9 @@ GET         /                               controllers.Default.redirect(to = "/
 GET         /thread-reference               uk.gov.hmrc.sdeccustomerfrontend.controllers.EnterThreadReferenceController.onPageLoad(mode: Mode = NormalMode)
 POST        /thread-reference               uk.gov.hmrc.sdeccustomerfrontend.controllers.EnterThreadReferenceController.onContinue(mode: Mode = NormalMode)
 
+GET         /reply-options                  uk.gov.hmrc.sdeccustomerfrontend.controllers.ReplyOptionsController.onPageLoad()
+POST        /reply-options                  uk.gov.hmrc.sdeccustomerfrontend.controllers.ReplyOptionsController.onSubmit()
+
 GET         /unauthorised                   uk.gov.hmrc.sdeccustomerfrontend.controllers.UnauthorisedController.onPageLoad()
 
 GET         /development-in-progress        uk.gov.hmrc.sdeccustomerfrontend.controllers.DevelopmentInProgressController.onPageLoad()
