@@ -16,10 +16,8 @@
 
 package uk.gov.hmrc.sdeccustomerfrontend.forms
 
+import play.api.data.Form
 import play.api.data.Forms.*
-import play.api.data.format.Formatter
-import play.api.data.validation.Constraint
-import play.api.data.{Form, FormError, Mapping}
 import uk.gov.hmrc.sdeccustomerfrontend.forms.mappings.Mappings
 import uk.gov.hmrc.sdeccustomerfrontend.models.{ReplyOption, ReplyOptions}
 
