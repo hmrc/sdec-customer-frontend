@@ -26,3 +26,6 @@ label.if_you_cannot_locate_your_thread_reference_number_ = If you cannot locate 
 label.enter_a_valid_reference_number = Enter a valid reference number
 label.still_having_issues = Still having issues?
 label.if_you_cannot_find_your_thread_reference_number_ = If you cannot find your thread reference number, contact the person who invited you to the service for help.
+
+
+label.reply_sent = Reply sent

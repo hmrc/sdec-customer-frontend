@@ -1,0 +1,47 @@
+/*
+ * Copyright 2026 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package uk.gov.hmrc.sdeccustomerfrontend.controllers
+
+import play.api.Logging
+import play.api.data.Form
+import play.api.i18n.I18nSupport
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
+import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
+import uk.gov.hmrc.sdeccustomerfrontend.forms.ThreadReferenceFormProvider
+import uk.gov.hmrc.sdeccustomerfrontend.forms.models.ThreadReferenceForm
+import uk.gov.hmrc.sdeccustomerfrontend.models.Mode
+import uk.gov.hmrc.sdeccustomerfrontend.models.thread.ThreadAccessResult
+import uk.gov.hmrc.sdeccustomerfrontend.services.ThreadAccessServiceAlgebra
+import uk.gov.hmrc.sdeccustomerfrontend.views.html.{EnterThreadReferenceView, ReplySentConfirmationView}
+
+import javax.inject.Inject
+import scala.concurrent.{ExecutionContext, Future}
+
+class ReplySentConfirmationController @Inject() (
+  val controllerComponents:  MessagesControllerComponents,
+  replySentConfirmationView: ReplySentConfirmationView
+) extends FrontendBaseController
+    with I18nSupport
+    with Logging {
+
+  def onPageLoad: Action[AnyContent] =
+    Action: request =>
+      given Request[AnyContent] = request
+      Ok(replySentConfirmationView())
+
+}
