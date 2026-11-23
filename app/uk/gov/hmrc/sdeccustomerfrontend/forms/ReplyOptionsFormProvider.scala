@@ -27,9 +27,7 @@ class ReplyOptionsFormProvider @Inject extends Mappings {
 
   def apply(): Form[ReplyOption] = Form(
     mapping(
-      "replyOption" -> enumerable[ReplyOptions](requiredKey =
-        "label.select_whether_you_can_provide_the_requested_information"
-      )
+      "replyOption" -> enumerable[ReplyOptions](requiredKey = "label.select_an_option_to_reply")
     )(ReplyOption.apply)(replyOption =>
       Some(
         replyOption.options
