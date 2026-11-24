@@ -14,35 +14,36 @@
  * limitations under the License.
  *@
 
+@import uk.gov.hmrc.sdeccustomerfrontend.viewmodels.LabelSize
+
 @this(
   layout: templates.Layout,
   govukButton: GovukButton,
-  govukPanel: GovukPanel
+  govukPanel: GovukPanel,
 )
 
-@()(implicit request: Request[_], messages: Messages)
+@(threadUrl: String, feedbackUrl: String)(implicit request: Request[_], messages: Messages)
 
-@layout( pageTitle = messages("label.reply_sent")) {
+@layout(pageTitle = messages("label.reply_sent"), showBackLink = false) {
 
+  @govukPanel(Panel(
+    title = Text(messages("label.reply_sent")),
+  ))
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <h2 class="govuk-heading-m">@messages("label.what_happens_next")</h2>
 
-    <div class="govuk-panel--confirmation">
-      <h1 class="govuk-panel__title">(Text(messages("label.reply_sent")))</h1>
-    </div>
+  <p class="govuk-body">@messages("label.you_have_been_sent_a_confirmation_email")</p>
+  <p class="govuk-body">@messages("label.your_reply_has_been_sent_to_hmrc_")</p>
 
-    @govukPanel(
-      LabelViewModel(messages("hellooo"))
-    )
+  <p class="govuk-body">
+    @messages("label.you_can_view_your_reply")
+    <a href="@threadUrl" class="govuk-link"> @messages("label.in_the_thread")</a>
+  </p>
 
+  <p class="govuk-body">
+    <a href="@feedbackUrl" class="govuk-link"> @messages("label.what_did_you_think_of_this_service")</a>
+    @messages("label.takes_30_seconds")
+  </p>
 
-
-      @govukButton(
-        ButtonViewModel(Text(messages("site.continue")))
-      )
-
-  </div>
-</div>
 
 }

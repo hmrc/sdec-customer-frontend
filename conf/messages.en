@@ -29,3 +29,11 @@ label.if_you_cannot_find_your_thread_reference_number_ = If you cannot find your
 
 
 label.reply_sent = Reply sent
+label.what_happens_next = What happens next
+label.you_have_been_sent_a_confirmation_email = You have been sent a confirmation email.
+label.your_reply_has_been_sent_to_hmrc_ = Your reply has been sent to HMRC - we will review your reply and will message to advise you of any next steps.
+label.you_can_view_your_reply = You can view your reply
+label.in_the_thread = in the thread.
+label.what_did_you_think_of_this_service = What did you think of this service?
+label.takes_30_seconds = (takes 30 seconds)
+

@@ -17,20 +17,12 @@
 package uk.gov.hmrc.sdeccustomerfrontend.controllers
 
 import play.api.Logging
-import play.api.data.Form
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
-import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
-import uk.gov.hmrc.sdeccustomerfrontend.forms.ThreadReferenceFormProvider
-import uk.gov.hmrc.sdeccustomerfrontend.forms.models.ThreadReferenceForm
-import uk.gov.hmrc.sdeccustomerfrontend.models.Mode
-import uk.gov.hmrc.sdeccustomerfrontend.models.thread.ThreadAccessResult
-import uk.gov.hmrc.sdeccustomerfrontend.services.ThreadAccessServiceAlgebra
-import uk.gov.hmrc.sdeccustomerfrontend.views.html.{EnterThreadReferenceView, ReplySentConfirmationView}
+import uk.gov.hmrc.sdeccustomerfrontend.views.html.ReplySentConfirmationView
 
 import javax.inject.Inject
-import scala.concurrent.{ExecutionContext, Future}
 
 class ReplySentConfirmationController @Inject() (
   val controllerComponents:  MessagesControllerComponents,
@@ -42,6 +34,11 @@ class ReplySentConfirmationController @Inject() (
   def onPageLoad: Action[AnyContent] =
     Action: request =>
       given Request[AnyContent] = request
-      Ok(replySentConfirmationView())
+      Ok(
+        replySentConfirmationView(
+          threadUrl = routes.DevelopmentInProgressController.onPageLoad().url,
+          feedbackUrl = routes.DevelopmentInProgressController.onPageLoad().url
+        )
+      )
 
 }
