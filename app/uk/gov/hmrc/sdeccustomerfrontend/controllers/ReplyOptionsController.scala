@@ -18,10 +18,11 @@ package uk.gov.hmrc.sdeccustomerfrontend.controllers
 
 import play.api.Logging
 import play.api.data.Form
-import play.api.i18n.{I18nSupport, MessagesApi}
+import play.api.i18n.I18nSupport
 import play.api.mvc.*
 import play.api.mvc.MessagesControllerComponents
-import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
+import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
 import uk.gov.hmrc.sdeccustomerfrontend.forms.ReplyOptionsFormProvider
 import uk.gov.hmrc.sdeccustomerfrontend.models.ReplyOption
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.ReplyOptionsView
@@ -31,25 +32,26 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class ReplyOptionsController @Inject() (
-  override val messagesApi: MessagesApi,
+  val controllerComponents: MessagesControllerComponents,
+  identifyExternalUser:     IdentifyExternalUser,
   replyOptionsFormProvider: ReplyOptionsFormProvider,
-  mcc:                      MessagesControllerComponents,
   replyOptionsView:         ReplyOptionsView
-)(using ExecutionContext)
-    extends FrontendController(mcc)
+)(using ec: ExecutionContext)
+    extends FrontendBaseController
     with I18nSupport
     with Logging {
 
   private val replyOptionsForm: Form[ReplyOption] = replyOptionsFormProvider()
 
   def onPageLoad: Action[AnyContent] =
-    Action: request =>
+    identifyExternalUser { request =>
       given Request[AnyContent] = request
       Ok(replyOptionsView(replyOptionsForm))
+    }
 
-  def onSubmit: Action[AnyContent] = {
-    logger.info(s"Handling Reply Option Submission")
-    Action.async: request =>
+  def onSubmit: Action[AnyContent] =
+    identifyExternalUser.async { request =>
+      logger.info(s"Handling Reply Option Submission")
       given Request[AnyContent] = request
       replyOptionsForm
         .bindFromRequest()
@@ -58,9 +60,8 @@ class ReplyOptionsController @Inject() (
             Future.successful(
               BadRequest(replyOptionsView(formWithErrors))
             ),
-          _ => Future.successful(Redirect(routes.ReplyOptionsController.onPageLoad()))
+          _ => Future.successful(Redirect(routes.DevelopmentInProgressController.onPageLoad()))
         )
-
-  }
+    }
 
 }
