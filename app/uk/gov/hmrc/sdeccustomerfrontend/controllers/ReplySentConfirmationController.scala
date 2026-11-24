@@ -20,19 +20,21 @@ import play.api.Logging
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
+import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.ReplySentConfirmationView
 
 import javax.inject.Inject
 
 class ReplySentConfirmationController @Inject() (
   val controllerComponents:  MessagesControllerComponents,
+  identifyExternalUser:      IdentifyExternalUser,
   replySentConfirmationView: ReplySentConfirmationView
 ) extends FrontendBaseController
     with I18nSupport
     with Logging {
 
   def onPageLoad: Action[AnyContent] =
-    Action: request =>
+    identifyExternalUser { request =>
       given Request[AnyContent] = request
       Ok(
         replySentConfirmationView(
@@ -40,5 +42,6 @@ class ReplySentConfirmationController @Inject() (
           feedbackUrl = routes.DevelopmentInProgressController.onPageLoad().url
         )
       )
+    }
 
 }
