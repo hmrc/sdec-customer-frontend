@@ -19,50 +19,38 @@ package uk.gov.hmrc.sdeccustomerfrontend.views
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatestplus.play.guice.GuiceOneAppPerSuite
-import play.api.data.Form
-import play.api.i18n.MessagesApi
-import play.api.test.FakeRequest
+import uk.gov.hmrc.sdeccustomerfrontend.base.ViewSpecBase
 import uk.gov.hmrc.sdeccustomerfrontend.forms.ReplyOptionsFormProvider
-import uk.gov.hmrc.sdeccustomerfrontend.models.ReplyOption
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.ReplyOptionsView
 
 import scala.jdk.CollectionConverters.*
 
-class ReplyOptionsViewSpec extends AnyWordSpec with Matchers with GuiceOneAppPerSuite {
+class ReplyOptionsViewSpec extends ViewSpecBase {
 
-  private val view         = app.injector.instanceOf[ReplyOptionsView]
-  private val request      = FakeRequest("GET", "/sdec/reply-options")
-  private val messages     = app.injector.instanceOf[MessagesApi].preferred(request)
-  private val formProvider = app.injector.instanceOf[ReplyOptionsFormProvider]
-
-  private def form: Form[ReplyOption] = formProvider()
-
-  private lazy val page: Document =
-    Jsoup.parse(view(form)(using request, messages).body)
+  private lazy val formProvider = app.injector.instanceOf[ReplyOptionsFormProvider]
+  private lazy val page: ReplyOptionsView = inject[ReplyOptionsView]
+  private lazy val view: Document = Jsoup.parse(page(formProvider())(request, messages).toString())
 
   val pageTitle   = "Can you provide the information HMRC has requested?"
   val serviceName = "Share Files Securely with HMRC"
 
-  "ReplyOptionsView" should {
+  "ReplyOptionsView" must {
     "have the correct title" in {
-      page.title() shouldBe s"$pageTitle - $serviceName - GOV.UK"
+      view.title() mustBe s"$pageTitle - $serviceName - GOV.UK"
     }
 
     "have a unique H1 heading, matching the page title" in {
-      val h1Elements: Elements = page.getElementsByTag("h1")
-      h1Elements.size() shouldBe 1
-      h1Elements.text() shouldBe pageTitle
+      val h1Elements: Elements = view.getElementsByTag("h1")
+      h1Elements.size() mustBe 1
+      h1Elements.text() mustBe pageTitle
     }
 
     "show a radio selection for selecting the Reply Option" in {
-      val radioButtons = page.select("#main-content .govuk-radios")
-      radioButtons.size() shouldBe 1
+      val radioButtons = view.select("#main-content .govuk-radios")
+      radioButtons.size() mustBe 1
       val radioOptions = radioButtons.select(".govuk-radios__item")
 
-      radioOptions.select(".govuk-radios__label").eachText().asScala.toSeq shouldBe Seq(
+      radioOptions.select(".govuk-radios__label").eachText().asScala.toSeq mustBe Seq(
         "Yes, I can provide all the information",
         "No, I can only provide some of the information",
         "No, I cannot provide any of the information"
@@ -70,15 +58,15 @@ class ReplyOptionsViewSpec extends AnyWordSpec with Matchers with GuiceOneAppPer
     }
 
     "show a hint for the Reply Option selection" in {
-      page.select("#main-content #replyOption-hint").text() shouldBe
+      view.select("#main-content #replyOption-hint").text() mustBe
         "Select an option. Don't worry if you cannot provide all the information HMRC has asked for. You can tell us about what you're providing and if you can't add something."
     }
 
     "show a Continue button" in {
-      val button = page.select("#main-content .govuk-button")
-      button.size()               shouldBe 1
-      button.first().text()       shouldBe "Continue"
-      button.first().attr("type") shouldBe "submit"
+      val button = view.select("#main-content .govuk-button")
+      button.size()               mustBe 1
+      button.first().text()       mustBe "Continue"
+      button.first().attr("type") mustBe "submit"
     }
 
   }
