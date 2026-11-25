@@ -29,7 +29,7 @@ class ReplyOptionsViewSpec extends ViewSpecBase {
 
   private lazy val formProvider = app.injector.instanceOf[ReplyOptionsFormProvider]
   private lazy val page: ReplyOptionsView = inject[ReplyOptionsView]
-  private lazy val view: Document = Jsoup.parse(page(formProvider())(request, messages).toString())
+  private lazy val view: Document         = Jsoup.parse(page(formProvider())(request, messages).toString())
 
   val pageTitle   = "Can you provide the information HMRC has requested?"
   val serviceName = "Share Files Securely with HMRC"
@@ -64,8 +64,8 @@ class ReplyOptionsViewSpec extends ViewSpecBase {
 
     "show a Continue button" in {
       val button = view.select("#main-content .govuk-button")
-      button.size()               mustBe 1
-      button.first().text()       mustBe "Continue"
+      button.size() mustBe 1
+      button.first().text() mustBe "Continue"
       button.first().attr("type") mustBe "submit"
     }
 

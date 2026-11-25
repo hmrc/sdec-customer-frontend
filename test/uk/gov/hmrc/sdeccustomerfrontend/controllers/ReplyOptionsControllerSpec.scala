@@ -16,35 +16,45 @@
 
 package uk.gov.hmrc.sdeccustomerfrontend.controllers
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatestplus.play.guice.GuiceOneAppPerSuite
-import play.api.Application
-import play.api.http.Status
-import play.api.inject.guice.GuiceApplicationBuilder
+import org.jsoup.Jsoup
 import play.api.test.FakeRequest
 import play.api.test.Helpers.*
+import uk.gov.hmrc.http.HeaderCarrier
+import uk.gov.hmrc.sdeccustomerfrontend.base.ControllerSpecBase
+import uk.gov.hmrc.sdeccustomerfrontend.forms.ReplyOptionsFormProvider
+import uk.gov.hmrc.sdeccustomerfrontend.views.html.ReplyOptionsView
 
-class ReplyOptionsControllerSpec extends AnyWordSpec with Matchers with GuiceOneAppPerSuite {
+import scala.concurrent.{ExecutionContext, Future}
 
-  override def fakeApplication(): Application =
-    new GuiceApplicationBuilder()
-      .build()
+class ReplyOptionsControllerSpec extends ControllerSpecBase {
 
-  private val fakeRequest = FakeRequest("GET", "/sdec-customer-frontend")
-  private val controller  = app.injector.instanceOf[ReplyOptionsController]
+  val pageTitle = "Can you provide the information HMRC has requested?"
 
-  "GET /" should {
+  private lazy val controller = new ReplyOptionsController(
+    messagesControllerComponents,
+    fakeIdentifyExternalUser,
+    new ReplyOptionsFormProvider,
+    inject[ReplyOptionsView]
+  )(using inject[ExecutionContext])
 
-    "return 200" in {
-      val result = controller.onPageLoad(fakeRequest)
-      status(result) shouldBe Status.OK
+  private def getRequest = FakeRequest(GET, routes.ReplyOptionsController.onPageLoad().url)
+
+  "ReplyOptionsController.onPageLoad" must {
+    "return OK and render the Reply Options page" in {
+      val result = controller.onPageLoad()(getRequest)
+      status(result) mustBe OK
+
+      val document = Jsoup.parse(contentAsString(result))
+      document.select("h1").text() mustBe pageTitle
     }
 
-    "return HTML" in {
-      val result = controller.onPageLoad(fakeRequest)
-      contentType(result) shouldBe Some("text/html")
-      charset(result)     shouldBe Some("utf-8")
+    "show the Continue button" in {
+      val document = Jsoup.parse(contentAsString(controller.onPageLoad()(getRequest)))
+      val button   = document.select(".govuk-main-wrapper button.govuk-button")
+      button.size() mustBe 1
+      button.text() mustBe "Continue"
+
     }
+
   }
 }

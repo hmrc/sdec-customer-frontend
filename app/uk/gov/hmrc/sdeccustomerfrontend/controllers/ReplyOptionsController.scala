@@ -24,7 +24,7 @@ import play.api.mvc.MessagesControllerComponents
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
 import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
 import uk.gov.hmrc.sdeccustomerfrontend.forms.ReplyOptionsFormProvider
-import uk.gov.hmrc.sdeccustomerfrontend.models.ReplyOption
+import uk.gov.hmrc.sdeccustomerfrontend.models.{ReplyOption, ReplyOptions}
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.ReplyOptionsView
 
 import javax.inject.{Inject, Singleton}
@@ -60,7 +60,15 @@ class ReplyOptionsController @Inject() (
             Future.successful(
               BadRequest(replyOptionsView(formWithErrors))
             ),
-          _ => Future.successful(Redirect(routes.DevelopmentInProgressController.onPageLoad()))
+          // TODO: replace with correct destinations once pages are created
+          replyOptionsForm =>
+            replyOptionsForm.options match {
+              case ReplyOptions.All | ReplyOptions.Partial =>
+                Future.successful(Redirect(routes.DevelopmentInProgressController.onPageLoad()))
+              // TODO - This will route to no files screen (SDEC-1456)
+              case ReplyOptions.Nothing =>
+                Future.successful(Redirect(routes.DevelopmentInProgressController.onPageLoad()))
+            }
         )
     }
 
