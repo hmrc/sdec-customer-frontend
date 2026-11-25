@@ -24,7 +24,7 @@ object ThreadFixtures {
 
   val threadId: String = "KL897865432211"
 
-  val sentAt:  LocalDateTime = LocalDateTime.of(2026, 6, 14, 10, 15)
+  val sentAt:  LocalDateTime = LocalDateTime.of(2026, 6, 14, 18, 15)
   val dueDate: LocalDate     = LocalDate.of(2026, 10, 27)
 
   val defaultRecipient: RecipientDetails = RecipientDetails(

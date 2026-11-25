@@ -74,8 +74,8 @@ class ThreadViewSpec extends ViewSpecBase {
 
     "show the event date and time" in {
       val time = view.select("time.hmrc-timeline__event-meta")
-      time.attr("datetime") mustBe "2026-06-14T10:15"
-      time.text() mustBe "14 June 2026 at 10:15am"
+      time.attr("datetime") mustBe "2026-06-14T18:15"
+      time.text() mustBe "14 June 2026 at 18:15"
     }
 
     "title the event 'File(s) sent and reply requested' when files are requested" in {

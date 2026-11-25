@@ -26,15 +26,21 @@ object DateTimeFormats {
   private val dateFormatter: DateTimeFormatter =
     DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.UK)
 
-  // 3 December 2011 at 12:22pm
-  private val dateAndTimeFormatter: DateTimeFormatter =
+  // 3 December 2011 at 09:42pm
+  private val dateAndTime12hFormatter: DateTimeFormatter =
     DateTimeFormatter.ofPattern("d MMMM yyyy 'at' h:mma", Locale.UK)
+
+  // 3 December 2011 at 21:42
+  private val dateAndTimeFormatter: DateTimeFormatter =
+    DateTimeFormatter.ofPattern("d MMMM yyyy 'at' H:mm", Locale.UK)
 
   extension (localDate: LocalDate) {
     def toDateFormat: String = localDate.format(dateFormatter)
   }
 
   extension (localDateTime: LocalDateTime) {
+    def toDateAndTime12hFormat: String = localDateTime.format(dateAndTime12hFormatter)
+
     def toDateAndTimeFormat: String = localDateTime.format(dateAndTimeFormatter)
   }
 }

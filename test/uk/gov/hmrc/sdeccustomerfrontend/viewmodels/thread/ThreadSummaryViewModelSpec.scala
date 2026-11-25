@@ -93,8 +93,8 @@ class ThreadSummaryViewModelSpec extends ViewSpecBase {
   }
 
   "formatDateTime" must {
-    "format as 'd MMMM yyyy at h:mm am/pm'" in {
-      ThreadSummaryViewModel.formatDateTime(sentAt) mustBe "14 June 2026 at 10:15am"
+    "format as 'd MMMM yyyy at H:mm'" in {
+      ThreadSummaryViewModel.formatDateTime(sentAt) mustBe "14 June 2026 at 18:15"
     }
   }
 

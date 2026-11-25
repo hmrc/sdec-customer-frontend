@@ -18,7 +18,7 @@ package uk.gov.hmrc.sdeccustomerfrontend.utils
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpec
-import uk.gov.hmrc.sdeccustomerfrontend.utils.DateTimeFormats.{toDateAndTimeFormat, toDateFormat}
+import uk.gov.hmrc.sdeccustomerfrontend.utils.DateTimeFormats.{toDateAndTime12hFormat, toDateAndTimeFormat, toDateFormat}
 
 import java.time.{LocalDate, LocalDateTime}
 
@@ -34,17 +34,31 @@ class DateTimeFormatsSpec extends AnyWordSpec with Matchers {
     }
   }
 
-  "toDateAndTimeFormat" must {
+  "toDateAndTime12Format" must {
     "format as 'd MMMM yyyy at h:mm am/pm'" in {
-      LocalDateTime.of(2011, 12, 3, 12, 22).toDateAndTimeFormat mustBe "3 December 2011 at 12:22pm"
+      LocalDateTime.of(2011, 12, 3, 12, 42).toDateAndTime12hFormat mustBe "3 December 2011 at 12:42pm"
     }
 
     "not zero-pad the hour" in {
-      LocalDateTime.of(2026, 6, 5, 9, 30).toDateAndTimeFormat mustBe "5 June 2026 at 9:30am"
+      LocalDateTime.of(2026, 6, 5, 9, 30).toDateAndTime12hFormat mustBe "5 June 2026 at 9:30am"
     }
 
     "show just after midnight as 12am" in {
-      LocalDateTime.of(2026, 6, 14, 0, 5).toDateAndTimeFormat mustBe "14 June 2026 at 12:05am"
+      LocalDateTime.of(2026, 6, 14, 0, 5).toDateAndTime12hFormat mustBe "14 June 2026 at 12:05am"
+    }
+  }
+
+  "toDateAndTimeFormat (24h format)" must {
+    "format as 'd MMMM yyyy at H:mm'" in {
+      LocalDateTime.of(2011, 12, 23, 21, 42).toDateAndTimeFormat mustBe "23 December 2011 at 21:42"
+    }
+
+    "not zero-pad the hour" in {
+      LocalDateTime.of(2026, 11, 28, 9, 30).toDateAndTimeFormat mustBe "28 November 2026 at 9:30"
+    }
+
+    "show just after midnight as 0:0x" in {
+      LocalDateTime.of(2026, 6, 27, 0, 5).toDateAndTimeFormat mustBe "27 June 2026 at 0:05"
     }
   }
 }
