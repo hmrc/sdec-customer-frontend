@@ -26,3 +26,11 @@ label.if_you_cannot_locate_your_thread_reference_number_ = If you cannot locate 
 label.enter_a_valid_reference_number = Enter a valid reference number
 label.still_having_issues = Still having issues?
 label.if_you_cannot_find_your_thread_reference_number_ = If you cannot find your thread reference number, contact the person who invited you to the service for help.
+
+label.reason_must_be_500_characters_or_less = Reason must be 500 characters or less
+label.enter_a_message = Enter a message
+label.explain_why_you_cant_send_any_files_ = Explain why you can't send any file(s) so HMRC can further help you with the request
+label.tell_us_why_you_cannot_provide_the_files = Tell us why you can't provide the files HMRC has asked for
+label.hmrc_will_not_tolerate_rude_abusive_or_threatening_language = HMRC will not tolerate rude, abusive, or threatening language
+label.step_2_of_3 = Step 2 of 3
+label.files_requested_by_hmrc = Files requested by HMRC
