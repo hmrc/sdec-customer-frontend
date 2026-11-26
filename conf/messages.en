@@ -27,10 +27,9 @@ label.enter_a_valid_reference_number = Enter a valid reference number
 label.still_having_issues = Still having issues?
 label.if_you_cannot_find_your_thread_reference_number_ = If you cannot find your thread reference number, contact the person who invited you to the service for help.
 
-# Reply Options Page
 label.reply_to_hmrc = Reply to HMRC
 label.can_you_provide_all_the_info_hmrc_has_requested = Can you provide the information HMRC has requested?
-label.select_an_option_dont_worry_if_you_cant_ = Select an option. Don'''t worry if you cannot provide all the information HMRC has asked for. You can tell us about what you'''re providing and if you can'''t add something.
+label.select_an_option_dont_worry_if_you_cant_ = Select an option. Don’t worry if you cannot provide all the information HMRC has asked for. You can tell us about what you’re providing and if you can’t add something.
 
 label.yes_i_can_provide_all_the_information = Yes, I can provide all the information
 label.no_i_can_only_provide_some_of_the_information = No, I can only provide some of the information
