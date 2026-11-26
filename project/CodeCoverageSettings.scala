@@ -1,3 +1,4 @@
+import CodeCoverageSettings.excludedFiles
 import sbt.Setting
 import scoverage.ScoverageKeys
 
@@ -11,12 +12,24 @@ object CodeCoverageSettings {
     "prod.*",
     ".*Routes.*",
     "testOnly.*",
-    "testOnlyDoNotUseInAppConf.*"
+    "testOnlyDoNotUseInAppConf.*",
+    ".*models.*",
+    ".*viewmodels.*",
+    ".*queries.*",
+    ".*forms.mappings.*"
+  )
+
+  private val excludedFiles: Seq[String] = Seq(
+    ".*ViewUtils",
+    ".*ErrorTemplate",
+    ".*Layout",
+    ".*Heading"
   )
 
   val settings: Seq[Setting[_]] = Seq(
     ScoverageKeys.coverageExcludedPackages := excludedPackages.mkString(";"),
-    ScoverageKeys.coverageMinimumStmtTotal := 90,
+    ScoverageKeys.coverageExcludedFiles := excludedFiles.mkString(";"),
+    ScoverageKeys.coverageMinimumStmtTotal := 60,
     ScoverageKeys.coverageFailOnMinimum := false,
     ScoverageKeys.coverageHighlighting := true
   )

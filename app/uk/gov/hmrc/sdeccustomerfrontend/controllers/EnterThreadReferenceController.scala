@@ -21,8 +21,8 @@ import play.api.data.Form
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
-import uk.gov.hmrc.sdeccustomerfrontend.controllers.ThreadResponse.routes
 import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
+import uk.gov.hmrc.sdeccustomerfrontend.controllers.threadResponse.routes
 import uk.gov.hmrc.sdeccustomerfrontend.forms.ThreadReferenceFormProvider
 import uk.gov.hmrc.sdeccustomerfrontend.forms.models.ThreadReferenceForm
 import uk.gov.hmrc.sdeccustomerfrontend.models.Mode

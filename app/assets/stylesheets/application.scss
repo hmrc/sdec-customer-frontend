@@ -1,21 +1,7 @@
 @import "lib/govuk-frontend/dist/govuk/base";
 
-.sdec-recipient-banner {
+.sdec-files-requested-banner {
   background-color: govuk-colour("blue", $variant: "tint-50");
   padding: govuk-spacing(3);
   margin-bottom: govuk-spacing(6);
-
-  &__details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: govuk-spacing(3);
-
-    @include govuk-media-query($until: tablet) {
-      grid-template-columns: 1fr;
-    }
-  }
-}
-
-body {
-  background: pink !important;
 }

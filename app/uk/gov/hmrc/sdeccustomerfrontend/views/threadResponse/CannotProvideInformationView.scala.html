@@ -20,7 +20,7 @@
 @import uk.gov.hmrc.govukfrontend.views.viewmodels.charactercount.CharacterCount
 @import uk.gov.hmrc.sdeccustomerfrontend.forms.models.CannotProvideInformationForm
 @import uk.gov.hmrc.govukfrontend.views.viewmodels.errormessage.ErrorMessage
-@import uk.gov.hmrc.sdeccustomerfrontend.controllers.ThreadResponse.{routes => threadResponseRoutes}
+@import uk.gov.hmrc.sdeccustomerfrontend.controllers.threadResponse.{routes => threadResponseRoutes}
 @import uk.gov.hmrc.sdeccustomerfrontend.views.html.templates.Layout
 
 @this(
@@ -56,12 +56,13 @@
 
     <p class="govuk-body">@messages("label.explain_why_you_cant_send_any_files_")</p>
 
-    <div class="sdec-recipient-banner">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">@messages("label.files_requested_by_hmrc")</h2>
-      <div class="sdec-recipient-banner__details">
-        <p class="govuk-body govuk-!-margin-bottom-0">PDF of bank statement</p>
-        <p class="govuk-body govuk-!-margin-bottom-0">Evidence of residency</p>
-        <p class="govuk-body govuk-!-margin-bottom-0">P60</p>
+    <div class="sdec-files-requested-banner">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">@messages("label.hmrc_asked_for_the_following_files")</h2>
+      <div class="sdec-files-requested-banner__details">
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+          <li><strong>@messages("label.proof_of_address")</strong></li>
+          <li><strong>@messages("label.completed_lamp_tax_form")</strong></li>
+        </ul>
       </div>
     </div>
 

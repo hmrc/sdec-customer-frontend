@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.sdeccustomerfrontend.controllers.ThreadResponse
+package uk.gov.hmrc.sdeccustomerfrontend.controllers.threadResponse
 
+import play.api.Logging
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
@@ -23,7 +24,7 @@ import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.IdentifyExternalUser
 import uk.gov.hmrc.sdeccustomerfrontend.controllers.routes
 import uk.gov.hmrc.sdeccustomerfrontend.forms.CannotProvideInformationFormProvider
 import uk.gov.hmrc.sdeccustomerfrontend.models.Mode
-import uk.gov.hmrc.sdeccustomerfrontend.views.html.ThreadResponse.CannotProvideInformationView
+import uk.gov.hmrc.sdeccustomerfrontend.views.html.threadResponse.CannotProvideInformationView
 
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext
@@ -35,7 +36,8 @@ class CannotProvideInformationController @Inject() (
   view:                     CannotProvideInformationView
 )(using ec: ExecutionContext)
     extends FrontendBaseController
-    with I18nSupport {
+    with I18nSupport
+    with Logging {
 
   private val form = formProvider()
 

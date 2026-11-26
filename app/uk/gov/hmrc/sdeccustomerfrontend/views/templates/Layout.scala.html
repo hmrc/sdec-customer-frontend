@@ -30,15 +30,11 @@
 
 @(pageTitle: String, showBackLink: Boolean = true, timeout: Boolean = true)(contentBlock: Html)(implicit rh: RequestHeader, messages: Messages)
 
-@head = {
-  <link rel="stylesheet"
-        href="@controllers.routes.Assets.versioned("stylesheets/application.css")"
-        type="text/css">
-}
-
 @content = {
-    @contentBlock
-    @hmrcReportTechnicalIssueHelper()
+  <link rel="stylesheet" href="@controllers.routes.Assets.versioned("stylesheets/application.css")" type="text/css">
+
+  @contentBlock
+  @hmrcReportTechnicalIssueHelper()
 }
 
 @hmrcStandardPage(HmrcStandardPageParams(
