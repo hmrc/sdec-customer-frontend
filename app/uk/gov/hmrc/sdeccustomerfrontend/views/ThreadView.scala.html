@@ -1,0 +1,89 @@
+@*
+ * Copyright 2026 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
+
+@import uk.gov.hmrc.sdeccustomerfrontend.models.thread.Thread
+@import uk.gov.hmrc.sdeccustomerfrontend.viewmodels.thread.ThreadSummaryViewModel
+
+@this(layout: templates.Layout, govukInsetText: GovukInsetText, govukButton: GovukButton)
+
+@(thread: Thread)(implicit request: Request[_], messages: Messages)
+
+@layout(
+  pageTitle = titleNoForm(messages("label.thread_details")),
+  showBackLink = false
+) {
+
+  <span class="govuk-caption-l">@messages("label.thread_reference_number", ThreadSummaryViewModel.referenceOrUnavailable(thread))</span>
+
+  <h1 class="govuk-heading-l">@ThreadSummaryViewModel.nameOrUnavailable(thread)</h1>
+
+  @govukInsetText(InsetText(
+    content = Text(messages(ThreadSummaryViewModel.insetKey(thread))),
+    attributes = Map("role" -> "status", "aria-live" -> "polite", "aria-atomic" -> "true")
+  ))
+
+  <h2 class="govuk-heading-m">@messages("label.timeline")</h2>
+
+  <ol class="hmrc-timeline">
+    <li class="hmrc-timeline__event">
+      <h2 class="hmrc-timeline__event-title">
+        @messages(ThreadSummaryViewModel.messageTitleKey(thread))
+        <span class="govuk-!-font-size-19 govuk-!-font-weight-regular">@messages("label.by_hmrc")</span>
+      </h2>
+
+      <time class="hmrc-timeline__event-meta" datetime="@thread.createdTimeStamp.toString">
+        @ThreadSummaryViewModel.formatDateTime(thread.createdTimeStamp)
+      </time>
+
+      <div class="hmrc-timeline__event-content">
+        @if(thread.threadDetails.requestedFiles.nonEmpty) {
+          <div class="sdec-requested-files">
+            <p class="govuk-body">@ThreadSummaryViewModel.requestedFilesIntro(thread)</p>
+            <ul class="govuk-list govuk-list--bullet">
+              @for(file <- thread.threadDetails.requestedFiles) {
+                <li>@file</li>
+              }
+            </ul>
+            <p class="govuk-body">@messages("label.if_you_cannot_provide_any_or_all_of_the_files_requested_")</p>
+          </div>
+        }
+
+        @for(paragraph <- ThreadSummaryViewModel.paragraphsOrUnavailable(thread)) {
+          <p class="govuk-body">@paragraph</p>
+        }
+
+        @if(thread.threadDetails.attachments.nonEmpty) {
+          <h3 class="govuk-heading-s">@messages("label.attachments")</h3>
+          <ul class="govuk-list">
+            @for(attachment <- thread.threadDetails.attachments) {
+              <li>
+                <a class="govuk-link" href="@routes.DevelopmentInProgressController.onPageLoad().url">@attachment.fileName</a>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </li>
+  </ol>
+
+  @if(ThreadSummaryViewModel.canReply(thread)) {
+    @govukButton(Button(
+      href = Some(routes.DevelopmentInProgressController.onPageLoad().url),
+      content = Text(messages("label.reply"))
+    ))
+  }
+
+}
