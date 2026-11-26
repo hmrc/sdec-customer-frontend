@@ -19,7 +19,6 @@ package uk.gov.hmrc.sdeccustomerfrontend.controllers
 import org.jsoup.Jsoup
 import play.api.test.FakeRequest
 import play.api.test.Helpers.*
-import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.sdeccustomerfrontend.base.ControllerSpecBase
 import uk.gov.hmrc.sdeccustomerfrontend.forms.ReplyOptionsFormProvider
 import uk.gov.hmrc.sdeccustomerfrontend.views.html.ReplyOptionsView
