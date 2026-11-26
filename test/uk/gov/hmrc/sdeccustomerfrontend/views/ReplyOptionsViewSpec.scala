@@ -59,7 +59,7 @@ class ReplyOptionsViewSpec extends ViewSpecBase {
 
     "show a hint for the Reply Option selection" in {
       view.select("#main-content #replyOption-hint").text() mustBe
-        "Select an option. Don't worry if you cannot provide all the information HMRC has asked for. You can tell us about what you're providing and if you can't add something."
+        "Select an option. Don’t worry if you cannot provide all the information HMRC has asked for. You can tell us about what you’re providing and if you can’t add something."
     }
 
     "show a Continue button" in {
