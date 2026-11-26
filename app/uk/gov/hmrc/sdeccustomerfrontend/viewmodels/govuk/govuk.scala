@@ -24,6 +24,7 @@ package object govuk {
       with ErrorSummaryFluency
       with InputFluency
       with LabelFluency
+      with FieldsetFluency
       with SummaryListFluency
-//      with CheckboxFluency
+      with CheckboxFluency
 }

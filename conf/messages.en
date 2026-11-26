@@ -34,7 +34,7 @@ label.use_this_section_to_make_any_changes_to_your_reply_before_sending_it = Use
 label.step_3_of_3 = Step 3 of 3
 
 # Reply details
-label.reply_details = Reply Details
+label.reply_details = Reply details
 label.files_provided = File(s) provided
 label.supporting_files = Supporting file(s)
 label.change = Change

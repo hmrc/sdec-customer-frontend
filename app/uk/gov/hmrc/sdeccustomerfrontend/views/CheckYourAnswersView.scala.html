@@ -30,8 +30,7 @@
 @layout(pageTitle = title(form, messages("label.check_your_answers")), fullWidth = true) {
 
     @if(form.errors.nonEmpty) {
-      @govukErrorSummary(
-        ErrorSummaryViewModel(form))
+      @govukErrorSummary(ErrorSummaryViewModel(form))
     }
 
     <span class="govuk-caption-l">@messages("label.step_3_of_3")</span>
@@ -47,7 +46,7 @@
 
     @formHelper(action = uk.gov.hmrc.sdeccustomerfrontend.controllers.routes.CheckYourAnswersController.onSubmit()) {
 
-      <h2 class="govuk-heading-m">@messages("label.declaration") (this will all be a Fieldset thing)</h2>
+      <h2 class="govuk-heading-m">@messages("label.declaration")</h2>
       <p class="govuk-body">@messages("label.by_sending_this_reply_you_confirm_that_the_information_you_have_given_")</p>
 
       <p class="govuk-body">@messages("label.if_you_make_a_false_statement_then_you_may")</p>
@@ -58,13 +57,21 @@
       </ul>
 
       @govukCheckboxes(
-        Checkboxes(
-          name = "declarationCheck",
-          items = Seq(
-            CheckboxItem(
-              content = Text(messages("label.i_agree_the_information_i_have_sent_is_complete_and_correct_")),
-              value = "true"
-            ))))
+          CheckboxesViewModel(
+            form = form,
+            name = "declarationCheck",
+            items = Seq(
+              CheckboxItemViewModel(
+                content = "label.i_agree_the_information_i_have_sent_is_complete_and_correct_",
+                fieldId = "declarationCheck",
+                index = 0,
+                value = "true"
+              )
+            )
+          )
+
+
+      )
 
       @govukButton(
         ButtonViewModel(Text(messages("label.send_reply")))

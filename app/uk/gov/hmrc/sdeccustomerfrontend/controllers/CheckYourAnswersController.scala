@@ -40,7 +40,7 @@ class CheckYourAnswersController @Inject() (
 
   private val checkYourAnswersForm = checkYourAnswersFormProvider()
 
-  // TODO - this will be a function not a val and will grab from the sessionRepo
+  // TODO - this will be a function and grab from the sessionRepo
   private val replyDetails: ReplyDetails =
     ReplyDetails(
       replyOption = "I can provide all :)",
