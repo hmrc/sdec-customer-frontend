@@ -19,7 +19,7 @@ package uk.gov.hmrc.sdeccustomerfrontend.config
 import play.api.inject.{Binding, Module as AppModule}
 import play.api.{Configuration, Environment}
 import uk.gov.hmrc.sdeccustomerfrontend.controllers.actions.{IdentifyExternalUser, IdentifyExternalUserAction}
-import uk.gov.hmrc.sdeccustomerfrontend.services.{ThreadAccessService, ThreadAccessServiceAlgebra}
+import uk.gov.hmrc.sdeccustomerfrontend.services.{ThreadAccessService, ThreadAccessServiceAlgebra, ThreadService, ThreadServiceAlgebra}
 
 import java.time.Clock
 
@@ -29,7 +29,8 @@ class Module extends AppModule {
     Seq(
       bind[Clock].toInstance(Clock.systemDefaultZone),
       bind[IdentifyExternalUser].to[IdentifyExternalUserAction],
-      bind[ThreadAccessServiceAlgebra].to[ThreadAccessService]
+      bind[ThreadAccessServiceAlgebra].to[ThreadAccessService],
+      bind[ThreadServiceAlgebra].to[ThreadService]
     )
 
 }
