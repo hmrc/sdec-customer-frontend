@@ -7,6 +7,8 @@ GET         /                               controllers.Default.redirect(to = "/
 GET         /thread-reference               uk.gov.hmrc.sdeccustomerfrontend.controllers.EnterThreadReferenceController.onPageLoad(mode: Mode = NormalMode)
 POST        /thread-reference               uk.gov.hmrc.sdeccustomerfrontend.controllers.EnterThreadReferenceController.onContinue(mode: Mode = NormalMode)
 
+GET         /thread/:threadId               uk.gov.hmrc.sdeccustomerfrontend.controllers.ThreadViewController.onPageLoad(threadId: String)
+
 GET         /check-answers                  uk.gov.hmrc.sdeccustomerfrontend.controllers.CheckYourAnswersController.onPageLoad()
 POST        /check-answers                  uk.gov.hmrc.sdeccustomerfrontend.controllers.CheckYourAnswersController.onSubmit()
 

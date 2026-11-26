@@ -34,6 +34,10 @@
     @hmrcReportTechnicalIssueHelper()
 }
 
+@head = {
+  <link href='@_root_.controllers.routes.Assets.versioned("stylesheets/application.css")' media="all" rel="stylesheet" type="text/css" />
+}
+
 @fullWidthLayout(inner: Html) = {
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
@@ -49,6 +53,9 @@
   ),
   templateOverrides = TemplateOverrides(
     mainContentLayout = if (fullWidth) Some(fullWidthLayout) else None
+  ),
+  templateOverrides = TemplateOverrides(
+    additionalHeadBlock = Some(head)
   ),
   isWelshTranslationAvailable = appConfig.welshLanguageSupportEnabled,
   backLink = if (showBackLink) Some(BackLink.mimicsBrowserBackButtonViaJavaScript) else None
