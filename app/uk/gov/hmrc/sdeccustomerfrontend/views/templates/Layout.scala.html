@@ -27,17 +27,28 @@
     hmrcStandardPage: HmrcStandardPage
 )
 
-@(pageTitle: String, showBackLink: Boolean = true, timeout: Boolean = true)(contentBlock: Html)(implicit rh: RequestHeader, messages: Messages)
+@(pageTitle: String, showBackLink: Boolean = true, timeout: Boolean = true, fullWidth: Boolean = false)(contentBlock: Html)(implicit rh: RequestHeader, messages: Messages)
 
 @content = {
     @contentBlock
     @hmrcReportTechnicalIssueHelper()
 }
 
+@fullWidthLayout(inner: Html) = {
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      @inner
+    </div>
+  </div>
+}
+
 @hmrcStandardPage(HmrcStandardPageParams(
   pageTitle = Some(pageTitle),
   serviceURLs = ServiceURLs(
     serviceUrl = Some(routes.EnterThreadReferenceController.onPageLoad().url)
+  ),
+  templateOverrides = TemplateOverrides(
+    mainContentLayout = if (fullWidth) Some(fullWidthLayout) else None
   ),
   isWelshTranslationAvailable = appConfig.welshLanguageSupportEnabled,
   backLink = if (showBackLink) Some(BackLink.mimicsBrowserBackButtonViaJavaScript) else None
