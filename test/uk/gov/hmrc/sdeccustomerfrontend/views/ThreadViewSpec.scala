@@ -144,7 +144,7 @@ class ThreadViewSpec extends ViewSpecBase {
       val button = view.select(replyButton)
       button.size() mustBe 1
       button.text() mustBe "Reply"
-      button.attr("href") mustBe routes.DevelopmentInProgressController.onPageLoad().url
+      button.attr("href") mustBe routes.ReplyOptionsController.onPageLoad().url
 
       Seq(ThreadStatus.Draft, ThreadStatus.Closed, ThreadStatus.Archived).foreach { status =>
         render(threadWith(status = status)).select(replyButton).size() mustBe 0

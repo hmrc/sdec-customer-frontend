@@ -43,3 +43,15 @@ label.files_sent_and_reply_requested = File(s) sent and reply requested
 label.you_must_provide_the_following_by_ = You must provide the following by {0}
 label.if_you_cannot_provide_any_or_all_of_the_files_requested_ = If you cannot provide any or all of the file(s) requested, press Reply and select the option which applies to you.
 label.attachments = Attachments
+
+label.reply_to_hmrc = Reply to HMRC
+label.can_you_provide_all_the_info_hmrc_has_requested = Can you provide the information HMRC has requested?
+label.select_an_option_dont_worry_if_you_cant_ = Select an option. Don’t worry if you cannot provide all the information HMRC has asked for. You can tell us about what you’re providing and if you can’t add something.
+
+label.yes_i_can_provide_all_the_information = Yes, I can provide all the information
+label.no_i_can_only_provide_some_of_the_information = No, I can only provide some of the information
+label.no_i_cannot_provide_any_of_the_information = No, I cannot provide any of the information
+
+label.select_an_option_to_reply = Select an option to reply
+
+
