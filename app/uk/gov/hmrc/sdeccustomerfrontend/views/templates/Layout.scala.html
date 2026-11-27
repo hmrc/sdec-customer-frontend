@@ -20,6 +20,7 @@
 @import uk.gov.hmrc.hmrcfrontend.views.html.components.*
 @import uk.gov.hmrc.hmrcfrontend.views.html.helpers.*
 @import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.*
+@import views.html.helper.CSPNonce
 
 @this(
     appConfig: FrontendAppConfig,
@@ -30,8 +31,10 @@
 @(pageTitle: String, showBackLink: Boolean = true, timeout: Boolean = true)(contentBlock: Html)(implicit rh: RequestHeader, messages: Messages)
 
 @content = {
-    @contentBlock
-    @hmrcReportTechnicalIssueHelper()
+  <link rel="stylesheet" href="@controllers.routes.Assets.versioned("stylesheets/application.css")" type="text/css">
+
+  @contentBlock
+  @hmrcReportTechnicalIssueHelper()
 }
 
 @head = {

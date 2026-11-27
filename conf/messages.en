@@ -43,3 +43,13 @@ label.files_sent_and_reply_requested = File(s) sent and reply requested
 label.you_must_provide_the_following_by_ = You must provide the following by {0}
 label.if_you_cannot_provide_any_or_all_of_the_files_requested_ = If you cannot provide any or all of the file(s) requested, press Reply and select the option which applies to you.
 label.attachments = Attachments
+
+label.reason_must_be_500_characters_or_less = Reason must be 500 characters or less
+label.enter_a_message = Enter a message
+label.explain_why_you_cant_send_any_files_ = Explain why you can't send any file(s) so HMRC can further help you with the request
+label.tell_us_why_you_cannot_provide_the_files = Tell us why you can't provide the files HMRC has asked for
+label.hmrc_will_not_tolerate_rude_abusive_or_threatening_language = HMRC will not tolerate rude, abusive, or threatening language
+label.step_2_of_3 = Step 2 of 3
+label.hmrc_asked_for_the_following_files = HMRC asked for the following file(s):
+label.proof_of_address = Proof of address
+label.completed_lamp_tax_form = Completed lamp tax form

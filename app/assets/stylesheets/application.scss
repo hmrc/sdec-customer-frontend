@@ -1,5 +1,11 @@
 @import "lib/govuk-frontend/dist/govuk/base";
 
+.sdec-files-requested-banner {
+  background-color: govuk-colour("blue", $variant: "tint-50");
+  padding: govuk-spacing(3);
+  margin-bottom: govuk-spacing(6);
+}
+
 .hmrc-timeline__event-title {
   display: inline;
 }
