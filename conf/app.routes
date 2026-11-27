@@ -10,6 +10,8 @@ POST        /thread-reference               uk.gov.hmrc.sdeccustomerfrontend.con
 GET         /cannot-provide-information     uk.gov.hmrc.sdeccustomerfrontend.controllers.threadResponse.CannotProvideInformationController.onPageLoad(mode: Mode = NormalMode)
 POST        /cannot-provide-information     uk.gov.hmrc.sdeccustomerfrontend.controllers.threadResponse.CannotProvideInformationController.onContinue(mode: Mode = NormalMode)
 
+GET         /thread/:threadId               uk.gov.hmrc.sdeccustomerfrontend.controllers.ThreadViewController.onPageLoad(threadId: String)
+
 GET         /unauthorised                   uk.gov.hmrc.sdeccustomerfrontend.controllers.UnauthorisedController.onPageLoad()
 
 GET         /development-in-progress        uk.gov.hmrc.sdeccustomerfrontend.controllers.DevelopmentInProgressController.onPageLoad()

@@ -5,3 +5,17 @@
   padding: govuk-spacing(3);
   margin-bottom: govuk-spacing(6);
 }
+
+.hmrc-timeline__event-title {
+  display: inline;
+}
+
+.sdec-requested-files {
+  background-color: govuk-colour("blue", "tint-80");
+  padding: govuk-spacing(3);
+  margin-bottom: govuk-spacing(6);
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
