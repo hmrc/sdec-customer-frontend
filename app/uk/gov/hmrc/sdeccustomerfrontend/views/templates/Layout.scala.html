@@ -52,9 +52,7 @@
     serviceUrl = Some(routes.EnterThreadReferenceController.onPageLoad().url)
   ),
   templateOverrides = TemplateOverrides(
-    mainContentLayout = if (fullWidth) Some(fullWidthLayout) else None
-  ),
-  templateOverrides = TemplateOverrides(
+    mainContentLayout = if (fullWidth) Some(fullWidthLayout) else None,
     additionalHeadBlock = Some(head)
   ),
   isWelshTranslationAvailable = appConfig.welshLanguageSupportEnabled,

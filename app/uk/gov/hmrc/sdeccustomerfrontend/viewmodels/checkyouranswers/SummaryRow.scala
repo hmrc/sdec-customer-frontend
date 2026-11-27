@@ -40,9 +40,9 @@ object SummaryRow {
       )
     )
 
-  def numberedList(labelKey: String, items: Seq[(String, String)])(using messages: Messages): SummaryListRow =
-    val listItems = items.map { (name, url) =>
-      s"""<li><a class="govuk-link" href="${HtmlFormat.escape(url).body}">${HtmlFormat.escape(name).body}</a></li>"""
+  def numberedList(labelKey: String, items: Seq[String])(using messages: Messages): SummaryListRow =
+    val listItems = items.map { name =>
+      s"""<li><a class="govuk-link" href="">${HtmlFormat.escape(name).body}</a></li>"""
     }.mkString
 
     build(

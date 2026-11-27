@@ -41,16 +41,19 @@ class CheckYourAnswersController @Inject() (
   private val checkYourAnswersForm = checkYourAnswersFormProvider()
 
   // TODO - this will be a function and grab from the sessionRepo
-  private val replyDetails: ReplyDetails =
+  private val replyDetailsNoFiles: ReplyDetails =
     ReplyDetails(
-      replyOption = "I can provide all :)",
+      replyOption = "No, I cannot provide any of the information", // TODO - use the labels when 1444 merged
+      message = "Example message"
+    )
+
+  private val replyDetailsFiles: ReplyDetails =
+    ReplyDetails(
+      replyOption = "Yes, I can provide all the files",
       supportingFiles = Some(
-        Seq(
-          ("hello", "hi"),
-          ("foo", "bar")
-        )
+        Seq("hello", "foo")
       ),
-      message = "message"
+      message = "Example message"
     )
 
   def onPageLoad: Action[AnyContent] =
@@ -59,7 +62,7 @@ class CheckYourAnswersController @Inject() (
       Ok(
         checkYourAnswersView(
           checkYourAnswersForm,
-          SummaryListViewModel(ReplyDetailsSummary.rows(replyDetails))
+          SummaryListViewModel(ReplyDetailsSummary.rows(replyDetailsNoFiles))
         )
       )
     }
@@ -73,7 +76,10 @@ class CheckYourAnswersController @Inject() (
           formWithErrors =>
             Future.successful(
               BadRequest(
-                checkYourAnswersView(formWithErrors, SummaryListViewModel(ReplyDetailsSummary.rows(replyDetails)))
+                checkYourAnswersView(
+                  formWithErrors,
+                  SummaryListViewModel(ReplyDetailsSummary.rows(replyDetailsNoFiles))
+                )
               )
             ),
           _ => Future.successful(Redirect(routes.DevelopmentInProgressController.onPageLoad()))

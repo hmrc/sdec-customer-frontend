@@ -19,12 +19,9 @@ package uk.gov.hmrc.sdeccustomerfrontend.models
 import play.api.libs.json.{Json, OFormat}
 
 final case class ReplyDetails(
-//  replyOption:     ReplyOptions, // TODO - needs to be:  ReplyOption or ReplyOptions... I think
-  replyOption:     String,
-  supportingFiles: Option[
-    Seq[(String, String)]
-  ] = None, // TODO - don't know what this will be... for now its a seq of (Filename, url)
-  message: String
+  replyOption:     String, // TODO - Change this to ReplyOptions when 1444 merged
+  supportingFiles: Option[Seq[String]] = None,
+  message:         String
 )
 
 object ReplyDetails {
