@@ -43,3 +43,31 @@ label.files_sent_and_reply_requested = File(s) sent and reply requested
 label.you_must_provide_the_following_by_ = You must provide the following by {0}
 label.if_you_cannot_provide_any_or_all_of_the_files_requested_ = If you cannot provide any or all of the file(s) requested, press Reply and select the option which applies to you.
 label.attachments = Attachments
+
+
+# --- Check your answers ---
+label.check_your_answers = Check your answers
+label.use_this_section_to_make_any_changes_to_your_reply_before_sending_it = Use this section to make any changes to your reply before sending it.
+label.step_3_of_3 = Step 3 of 3
+
+# Reply details
+label.reply_details = Reply details
+label.files_provided = File(s) provided
+label.supporting_files = Supporting file(s)
+label.change = Change
+label.your_message_to_hmrc = Your message to HMRC
+
+# Declaration form
+label.declaration = Declaration
+label.by_sending_this_reply_you_confirm_that_the_information_you_have_given_ = By sending this reply, you confirm that the information you have given is complete and correct to the best of your knowledge and belief.
+label.if_you_make_a_false_statement_then_you_may = If you make a false statement then you may:
+label.commit_a_criminal_offence_and_be_at_risk_of_prosecution = commit a criminal offence and be at risk of prosecution
+label.need_to_pay_a_financial_penalty = need to pay a financial penalty
+label.have_to_pay_back_money_to_which_you_are_not_entitled = have to pay back money to which you are not entitled
+label.i_agree_the_information_i_have_sent_is_complete_and_correct_ = I agree the information I have sent is complete and correct to the best of my knowledge and belief.
+label.send_reply = Send reply
+label.select_yes_to_make_your_declaration = Select yes to make your declaration
+
+
+
+

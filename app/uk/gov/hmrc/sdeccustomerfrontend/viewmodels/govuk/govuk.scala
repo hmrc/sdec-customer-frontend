@@ -18,5 +18,13 @@ package uk.gov.hmrc.sdeccustomerfrontend.viewmodels
 
 package object govuk {
 
-  object all extends ImplicitConversions with ButtonFluency with ErrorSummaryFluency with InputFluency with LabelFluency
+  object all
+      extends ImplicitConversions
+      with ButtonFluency
+      with ErrorSummaryFluency
+      with InputFluency
+      with LabelFluency
+      with FieldsetFluency
+      with SummaryListFluency
+      with CheckboxFluency
 }

@@ -9,6 +9,9 @@ POST        /thread-reference               uk.gov.hmrc.sdeccustomerfrontend.con
 
 GET         /thread/:threadId               uk.gov.hmrc.sdeccustomerfrontend.controllers.ThreadViewController.onPageLoad(threadId: String)
 
+GET         /check-answers                  uk.gov.hmrc.sdeccustomerfrontend.controllers.CheckYourAnswersController.onPageLoad()
+POST        /check-answers                  uk.gov.hmrc.sdeccustomerfrontend.controllers.CheckYourAnswersController.onSubmit()
+
 GET         /unauthorised                   uk.gov.hmrc.sdeccustomerfrontend.controllers.UnauthorisedController.onPageLoad()
 
 GET         /development-in-progress        uk.gov.hmrc.sdeccustomerfrontend.controllers.DevelopmentInProgressController.onPageLoad()

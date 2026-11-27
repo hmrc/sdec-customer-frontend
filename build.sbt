@@ -24,7 +24,8 @@ lazy val microservice = Project("sdec-customer-frontend", file("."))
       "uk.gov.hmrc.sdeccustomerfrontend.controllers.routes",
       "uk.gov.hmrc.sdeccustomerfrontend.views.ViewUtils._",
       "uk.gov.hmrc.sdeccustomerfrontend.models.Mode",
-      "uk.gov.hmrc.sdeccustomerfrontend.viewmodels.govuk.all._"
+      "uk.gov.hmrc.sdeccustomerfrontend.viewmodels.govuk.all._",
+      "uk.gov.hmrc.sdeccustomerfrontend.viewmodels.govuk.all.given"
     ),
     PlayKeys.playDefaultPort := 4002,
     libraryDependencies ++= AppDependencies.compile ++ AppDependencies.test,
