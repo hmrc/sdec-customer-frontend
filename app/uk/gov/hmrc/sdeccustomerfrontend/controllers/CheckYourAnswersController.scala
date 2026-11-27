@@ -47,14 +47,6 @@ class CheckYourAnswersController @Inject() (
       message = "Example message"
     )
 
-  ReplyDetails(
-    replyOption = "Yes, I can provide all the files",
-    supportingFiles = Some(
-      Seq("hello", "foo")
-    ),
-    message = "Example message"
-  )
-
   def onPageLoad: Action[AnyContent] =
     identifyExternalUser { request =>
       given Request[AnyContent] = request
