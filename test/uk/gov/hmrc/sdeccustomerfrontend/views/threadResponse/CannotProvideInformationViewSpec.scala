@@ -32,7 +32,7 @@ class CannotProvideInformationViewSpec extends ViewSpecBase with Matchers with G
   private lazy val page: CannotProvideInformationView = inject[CannotProvideInformationView]
   private lazy val view: Document = Jsoup.parse(page(formProvider(), NormalMode)(request, messages).toString())
 
-  private val pageTitle = messages("label.tell_us_why_you_cannot_provide_the_files")
+  private val pageTitle = "Tell us why you cant provide the files HMRC has asked for"
 
   "CannotProvideInformationView" must {
 
@@ -50,7 +50,7 @@ class CannotProvideInformationViewSpec extends ViewSpecBase with Matchers with G
     "have the correct caption" in {
       val captions = view.getElementsByClass("govuk-caption-l")
       captions.size() mustBe 1
-      captions.first().text() mustBe messages("label.step_2_of_3")
+      captions.first().text() mustBe "Step 2 of 3"
     }
 
     "have the explanatory paragraph" in {
@@ -58,14 +58,14 @@ class CannotProvideInformationViewSpec extends ViewSpecBase with Matchers with G
 
       paragraphs
         .get(0)
-        .text() mustBe messages("label.explain_why_you_cant_send_any_files_")
+        .text() mustBe "Explain why you cant send any file(s) so HMRC can further help you with the request"
     }
 
     "display the files requested banner" in {
       val banner = view.select(".sdec-files-requested-banner")
 
       banner.size() mustBe 1
-      banner.select("h2").text() mustBe messages("label.hmrc_asked_for_the_following_files")
+      banner.select("h2").text() mustBe "HMRC asked for the following file(s):"
     }
 
     "display the requested files" in {
@@ -73,8 +73,8 @@ class CannotProvideInformationViewSpec extends ViewSpecBase with Matchers with G
 
       files.size() mustBe 2
 
-      files.get(0).text() mustBe messages("label.proof_of_address")
-      files.get(1).text() mustBe messages("label.completed_lamp_tax_form")
+      files.get(0).text() mustBe "Proof of address"
+      files.get(1).text() mustBe "Completed lamp tax form"
     }
 
     "display the message field" in {
@@ -87,14 +87,14 @@ class CannotProvideInformationViewSpec extends ViewSpecBase with Matchers with G
       val warning = view.select(".govuk-warning-text")
 
       warning.size() mustBe 1
-      warning.text() must include(messages("label.hmrc_will_not_tolerate_rude_abusive_or_threatening_language"))
+      warning.text() must include("HMRC will not tolerate rude, abusive, or threatening language")
     }
 
     "display the Continue button" in {
       val buttons: Elements = view.getElementsByClass("govuk-button")
 
       buttons.size() mustBe 1
-      buttons.first().text() mustBe messages("site.continue")
+      buttons.first().text() mustBe "Continue"
     }
   }
 }
