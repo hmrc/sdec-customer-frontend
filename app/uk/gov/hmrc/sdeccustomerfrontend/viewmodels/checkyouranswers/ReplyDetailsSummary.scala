@@ -31,8 +31,8 @@ object ReplyDetailsSummary {
 
   private def supportingFilesRow(replyDetails: ReplyDetails)(using messages: Messages): Option[SummaryListRow] =
     replyDetails.supportingFiles
+      // TODO - filter with this once SDEC-1444 is merged in
 //      .filter(_ => replyDetails.replyOption != ReplyOptions.Nothing)
-      .filter(_ => replyDetails.replyOption != "aaa")
       .map(supportingFiles => SummaryRow.numberedList("label.supporting_files", supportingFiles))
 
 }
