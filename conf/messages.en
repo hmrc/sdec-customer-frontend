@@ -43,3 +43,14 @@ label.files_sent_and_reply_requested = File(s) sent and reply requested
 label.you_must_provide_the_following_by_ = You must provide the following by {0}
 label.if_you_cannot_provide_any_or_all_of_the_files_requested_ = If you cannot provide any or all of the file(s) requested, press Reply and select the option which applies to you.
 label.attachments = Attachments
+
+
+label.reply_sent = Reply sent
+label.what_happens_next = What happens next
+label.you_have_been_sent_a_confirmation_email = You have been sent a confirmation email.
+label.your_reply_has_been_sent_to_hmrc_ = Your reply has been sent to HMRC - we will review your reply and will message to advise you of any next steps.
+label.you_can_view_your_reply = You can view your reply
+label.in_the_thread = in the thread.
+label.what_did_you_think_of_this_service = What did you think of this service?
+label.takes_30_seconds = (takes 30 seconds)
+
